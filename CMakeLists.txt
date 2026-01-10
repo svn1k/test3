@@ -10,13 +10,19 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(apptest3
     main.cpp
+    clickfunc.h
+    clickfunc.cpp
 )
 
 qt_add_qml_module(apptest3
     URI test3
     QML_FILES
         Main.qml
-        QML_FILES Cell.qml
+        QML_FILES
+        SOURCES
+        SOURCES
+        SOURCES clickfunc.h
+        SOURCES clickfunc.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

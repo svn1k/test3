@@ -2,64 +2,95 @@ import QtQuick
 import QtQuick.Window 2.2
 
 
-Rectangle{
-    id: firstrect
-    width: 640
-    height: 480
-    color: "#002700"
+Window {
     visible: true
-    Text{
-        id: textt
-        visible:true
-        text: "123"
-        y: 30
-        anchors.centerIn: firstrect
-        color: "#FFFFFF"
-        font.pointSize: 24
-    }
-
-    Grid{
-        id: colorpick
-        x:4
-        anchors.bottom: firstrect.bottom
-        anchors.bottomMargin: 4
-        rows: 2
-        columns:3
-        spacing: 8
-        Cell { cellColor: "red"; onClicked: textt.color = cellColor }
-        Cell { cellColor: "green"; onClicked: textt.color = cellColor }
-        Cell { cellColor: "blue"; onClicked: textt.color = cellColor }
-        Cell { cellColor: "yellow"; onClicked: textt.color = cellColor }
-        Cell { cellColor: "steelblue"; onClicked: textt.color = cellColor }
-        Cell { cellColor: "black"; onClicked: textt.color = cellColor }
-    }
+    width: 480
+    height: 640
+    maximumHeight: height
+    maximumWidth: width
+    minimumHeight: height
+    minimumWidth: width
     Rectangle{
-        id: textoffon
-        property bool xyi:false
+        id:recta
         visible: true
-        width: 640 /4
-        height: 480 /4
-        anchors.bottom: firstrect.bottom
-        anchors.right: firstrect.right
-        color: "orange"
-        border.color: "white"
-        border.width: 4
-        radius: 20
-        Text{
-            id: onofftext
-            anchors.centerIn:parent
-            visible:true
-            color:"white"
-            text: textoffon.xyi ? "turn on txt" : "turn off txt"
-            font.pointSize: 20
+        width: 480
+        height: 640
+        color: "green"
+        Rectangle{
+            color:"orange"
+            visible: true
+            anchors.bottom: recta.bottom
+            anchors.left: recta.left
+            width: recta.width /3 -5
+            height: recta.height / 8
+            border.width: 2
+            radius: 25
+            Text{
+                visible:true
+                anchors.centerIn: parent
+                text:"shop"
+                font.pointSize: 20
+                font.bold:true
             }
-        MouseArea {
+        }
+        Rectangle{
+            color:"orange"
+            visible: true
+            anchors.bottom: recta.bottom
+            anchors.horizontalCenter: recta.horizontalCenter
+            width: recta.width /3 -5
+            height: recta.height / 8
+            border.width: 2
+            radius: 25
+            Text{
+                visible:true
+                anchors.centerIn: parent
+                text:"stats"
+                font.pointSize: 20
+                font.bold:true
+            }
+        }
+        Rectangle{
+            color:"orange"
+            visible: true
+            anchors.bottom: recta.bottom
+            anchors.right: recta.right
+            width: recta.width /3 -5
+            height: recta.height / 8
+            border.width: 2
+            radius: 25
+            Text{
+                visible:true
+                anchors.centerIn: parent
+                text:"settings"
+                font.pointSize: 20
+                font.bold:true
+            }
+        }
+        Text{
+            id:result
+            y: 30
+            visible:true
+            text: textContent
+            font.pointSize: 22
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Rectangle{
+            width:200
+            height:300
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 180
+
+            MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    textt.visible = !textt.visible
-                    textoffon.xyi = !textoffon.xyi
+                    let currentNumber = parseInt(result.text)
+                    let nextValue = cppClicker.click(currentNumber)
+                    result.text = nextValue.toString()
                 }
+            }
         }
+
     }
 }
 

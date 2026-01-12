@@ -54,6 +54,7 @@ Window {
 
         }
         Rectangle{
+            property int clickup: 10
             id:shop
             color: "orange"
             visible: false
@@ -65,6 +66,38 @@ Window {
                 font.pointSize: 30
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 15
+            }
+            Rectangle{
+                color:"#FFD700"
+                width:150
+                height:60
+                x:300
+                y:90
+                border.width: 2
+                radius:20
+                Text{
+                    text:"BUY"
+                    font.pointSize:20
+                    anchors.centerIn:parent
+                }
+                MouseArea{
+                    anchors.fill:parent
+                    onClicked: {
+
+                        if(parseInt(result.text)>=shop.clickup){
+                            let diff = parseInt(result.text) - shop.clickup
+                            result.text = diff.toString()
+                            shop.clickup *= 1.5; cppClicker.modify_up()
+
+                        }
+                    }
+                }
+            }
+            Text{
+                text: "Click upgrade
+Price:" + shop.clickup.toString()
+                font.pointSize: 18
+                y:85
             }
         }
         Rectangle{

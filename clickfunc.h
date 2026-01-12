@@ -10,7 +10,7 @@ class Backend : public QObject
 public:
     explicit Backend(QObject *parent = nullptr);
 
-    // Объявляем функцию, которую можно вызвать из QML
+    Q_INVOKABLE void modify_up();
     Q_INVOKABLE int click(int y);
 };
 

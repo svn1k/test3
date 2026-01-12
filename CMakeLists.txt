@@ -19,8 +19,6 @@ qt_add_qml_module(apptest3
     QML_FILES
         Main.qml
         QML_FILES
-        SOURCES
-        SOURCES
         SOURCES clickfunc.h
         SOURCES clickfunc.cpp
 )

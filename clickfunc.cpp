@@ -16,3 +16,6 @@ int Backend::click(int y)
 {
     return y + 1 + modify;
 }
+void Backend::modify_up(){
+    modify++;
+}

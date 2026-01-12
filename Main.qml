@@ -58,7 +58,7 @@ Window {
             color: "orange"
             visible: false
             width: recta.width
-            height: recta.height / 8 * 7 - 5
+            height: recta.height / 8 * 7 - 3
             Text{
                 text: "shop"
                 font.bold: true
@@ -72,7 +72,7 @@ Window {
             color: "orange"
             visible: false
             width: recta.width
-            height: recta.height / 8 * 7 - 5
+            height: recta.height / 8 * 7 - 3
             Text{
                 text: "stats"
                 font.bold: true
@@ -81,9 +81,9 @@ Window {
                 y: 15
             }
             Text{
-                text:"count of clicks:" + clickcount
+                text:"count of clicks:  " + recta.clickcount.toString()
                 font.pointSize:20
-                y:90
+                y:80
             }
         }
         Rectangle{
@@ -91,7 +91,7 @@ Window {
             color: "orange"
             visible: false
             width: recta.width
-            height: recta.height / 8 * 7 - 5
+            height: recta.height / 8 * 7 - 3
             Text{
                 text: "settings"
                 font.bold: true
@@ -173,7 +173,7 @@ Window {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    clickcount += 1
+                    recta.clickcount += 1
                     let numa = parseInt(result.text)
                     let numb = cppClicker.click(numa)
                     result.text = numb.toString()

@@ -9,12 +9,11 @@
 using namespace std;
 int modify = 0;
 int x;
+extern int k;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-
-    engine.rootContext()->setContextProperty("textContent", QString::number(x));
     Backend clickfunc;
     engine.rootContext()->setContextProperty("cppClicker", &clickfunc);
     const QUrl url("qrc:/path/main.qml");

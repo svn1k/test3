@@ -1,10 +1,18 @@
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QScreen>
+#include <QQmlContext>
+#include <QWindow>
+#include <QObject>
+#include <QString>
 #include "clickfunc.h"
-
 Backend::Backend(QObject *parent) : QObject(parent)
 {
 }
 extern int modify;
-int Backend::click(int k)
+extern int x;
+int k;
+int Backend::click(int y)
 {
-    return k + 1 + modify;
+    return y + 1 + modify;
 }

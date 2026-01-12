@@ -11,7 +11,7 @@ public:
     explicit Backend(QObject *parent = nullptr);
 
     // Объявляем функцию, которую можно вызвать из QML
-    Q_INVOKABLE int click(int k);
+    Q_INVOKABLE int click(int y);
 };
 
 #endif // BACKEND_H

@@ -17,6 +17,7 @@ Window {
         height: 640
         color: "green"
         property int clickcount: 0
+        property int value_earned: 0
         Rectangle{
             id:buttonfield
             color: "orange"
@@ -118,6 +119,11 @@ Price:" + shop.clickup.toString()
                 font.pointSize:20
                 y:80
             }
+            Text{
+                text:"Value earned  " + recta.value_earned.toString()
+                font.pointSize:20
+                y:120
+            }
         }
         Rectangle{
             id:settings
@@ -197,18 +203,19 @@ Price:" + shop.clickup.toString()
         }
         Rectangle{
             id: clickarea
-
             width:200
             height:300
             anchors.horizontalCenter: parent.horizontalCenter
             y: 180
             opacity: 0
+            visible: result.visible
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
                     recta.clickcount += 1
                     let numa = parseInt(result.text)
                     let numb = cppClicker.click(numa)
+                    recta.value_earned += (numb - numa)
                     result.text = numb.toString()
                 }
             }
